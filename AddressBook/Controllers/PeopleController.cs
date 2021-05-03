@@ -32,5 +32,14 @@ namespace AddressBook.Api.Controllers
 
             return Ok(personResource);
         }
+
+        [HttpGet("")]
+        public async Task<ActionResult<PersonResource>> GetAll()
+        {
+            var people = await personService.GetAllAsync();
+            var personResource = mapper.Map<List<Person>, List<PersonResource>>(people);
+
+            return Ok(personResource);
+        }
     }
 }

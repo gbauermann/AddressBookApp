@@ -1,6 +1,7 @@
 ﻿
 using AddressBook.Data;
 using Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AddressBook.Service
@@ -16,6 +17,11 @@ namespace AddressBook.Service
         public ValueTask<Person> GetById(int id)
         {
             return unitOfWork.People.GetByIdAsync(id);
+        }
+
+        public Task<List<Person>> GetAllAsync()
+        {
+            return unitOfWork.People.GetAllAsync();
         }
     }
 }
